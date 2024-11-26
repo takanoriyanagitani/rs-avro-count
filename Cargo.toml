@@ -1,0 +1,28 @@
+[package]
+name = "rs-avro-count"
+version = "0.1.0"
+edition = "2021"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+unwrap_used = "forbid"
+
+[profile.release]
+lto = true
+strip = true
+codegen-units = 16
+
+[profile.release-wasi]
+inherits = "release"
+lto = true
+strip = true
+opt-level = 's'
+codegen-units = 16
+
+[dependencies.apache-avro]
+version = "0.17.0"
+default-features = false
+features = [
+]
